@@ -21,7 +21,7 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>CURLTextSearcher</string>
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
@@ -36,9 +36,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%_%match%.dmg</string>
+				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>%DL_URL%/%NAME%%20%match%.dmg</string>
+				<string>%DL_URL%/%match%</string>
 			</dict>
 		</dict>
 		<dict>
