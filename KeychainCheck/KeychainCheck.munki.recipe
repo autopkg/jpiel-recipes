@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Client VPN from Lobotomo Software</string>
+	<string>a quick check of your keychain setup</string>
 	<key>Identifier</key>
-	<string>com.github.jpiel.munki.IPSecuritas</string>
+	<string>com.github.jpiel.munki.KeychainCheck</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
+		<string>Admin Utilities</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps</string>
 		<key>pkginfo</key>
@@ -21,11 +21,11 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>Client VPN</string>
+			<string>a quick check of your keychain setup</string>
 			<key>developer</key>
-			<string>Lobotomo Software</string>
+			<string>The Eclectic Company</string>
 			<key>display_name</key>
-			<string>IPSecuritas</string>
+			<string>KeychainCheck</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -34,7 +34,7 @@
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.pkg.IPSecuritas</string>
+	<string>com.github.jpiel.pkg.KeychainCheck</string>
 	<key>Process</key>
 	<array>
 		<dict>
