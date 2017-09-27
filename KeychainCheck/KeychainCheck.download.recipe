@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>KeychainCheck</string>
 		<key>SEARCH_PATTERN</key>
-		<string>\d{4}/\d\d/KeychainCheck(\d+)\.dmg</string>
+		<string>([0-9]+/[0-9]+/keychaincheck([0-9]+)\.zip)</string>
 		<key>SEARCH_URL</key>
 		<string>https://eclecticlight.co/downloads/</string>
 		<key>DL_URL</key>
@@ -21,7 +21,7 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>CURLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
