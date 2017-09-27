@@ -33,7 +33,7 @@
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>org.fftir.pkg.IPSecuritas</string>
+	<string>com.github.jpiel.pkg.IPSecuritas</string>
 	<key>Process</key>
 	<array>
 		<dict>
