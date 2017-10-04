@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Package KeychainCheck.</string>
+	<string>Package KeychainCheck. Will install the app and the "readme" in a folder named KeychainCheck.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.pkg.KeychainCheck</string>
 	<key>Input</key>

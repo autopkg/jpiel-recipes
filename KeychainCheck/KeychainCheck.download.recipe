@@ -58,17 +58,6 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-			    <key>path_list</key>
-    			<array>
-		    		<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-    			</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>FileFinder</string>
 			<key>Arguments</key>
 			<dict>
@@ -78,12 +67,14 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>FileMover</string>
+			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source</key>
+			    <key>overwrite</key>
+			    <true/>
+				<key>source_path</key>
 				<string>%found_filename%</string>
-				<key>target</key>
+				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 			</dict>
 		</dict>
@@ -108,14 +99,23 @@
 			</dict>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
+		    <key>Processor</key>
+		    <string>PlistReader</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>info_path</key>
 				<string>%found_filename%/Contents/Info.plist</string>
-			</dict>
-		</dict>
+				<key>plist_keys</key>
+                <dict>
+                    <key>CFBundleShortVersionString</key>
+                    <string>version</string>
+                    <key>CFBundleIdentifier</key>
+                    <string>bundleid</string>
+                    <key>CFBundleName</key>
+                    <string>app_name</string>
+                </dict>
+		    </dict>
+		</dict>		
 
 	</array>
 </dict>

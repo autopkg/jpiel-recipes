@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>a quick check of your keychain setup</string>
+	<string>a quick check of your keychain setup.  Will install the app and the "readme" in a folder named KeychainCheck.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.KeychainCheck</string>
 	<key>Input</key>
@@ -30,7 +30,6 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-			
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
@@ -44,6 +43,8 @@
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
 			</dict>
 		</dict>
 	</array>
