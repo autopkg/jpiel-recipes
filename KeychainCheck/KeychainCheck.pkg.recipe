@@ -7,7 +7,10 @@
 	<key>Identifier</key>
 	<string>com.github.jpiel.pkg.KeychainCheck</string>
 	<key>Input</key>
-	<dict/>
+	<dict>
+		<key>INSTALL_DIR</key>
+		<string>Applications</string>
+	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.KeychainCheck</string>
 	<key>Process</key>
@@ -20,11 +23,7 @@
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
-				<dict>
-					<key>Applications</key>
-					<string>0775</string>
-				</dict>
-
+				<dict/>
 			</dict>
 		</dict>
 		<dict>
@@ -35,7 +34,7 @@
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%NAME%</string>
+				<string>%pkgroot%/%INSTALL_DIR%/%NAME%</string>
 		    </dict>
 		</dict>
 		<dict>
@@ -57,11 +56,13 @@
 					<array>
 					<dict>
 						<key>path</key>
-						<string>Applications</string>
+						<string>%INSTALL_DIR%</string>
 						<key>user</key>
 						<string>root</string>
 						<key>group</key>
 						<string>admin</string>
+						<key>mode</key>
+						<string>0775</string>
 					</dict>
 					</array>
 				</dict>
