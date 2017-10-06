@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>A quick check of your keychain setup.  Will install the app and the "readme" in a folder named KeychainCheck.</string>
+	<string>a quick check of your keychain setup.  Will install the app only without the readme file.</string>
 	<key>Identifier</key>
-	<string>com.github.jpiel.munki.KeychainCheck</string>
+	<string>com.github.jpiel.munki.KeychainCheck-AppOnly</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_CATEGORY</key>
@@ -21,21 +21,32 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>A quick check of your keychain setup</string>
+			<string>a quick check of your keychain setup</string>
 			<key>developer</key>
 			<string>The Eclectic Company</string>
 			<key>display_name</key>
 			<string>KeychainCheck</string>
 			<key>name</key>
-			<string>%NAME%</string>
+			<string>%NAME%-app</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.pkg.KeychainCheck</string>
+	<string>com.github.jpiel.download.KeychainCheck</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -44,7 +55,9 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>pkg_path</key>
-				<string>%pkg_path%</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>force_munkiimport</key>
+				<false/>
 			</dict>
 		</dict>
 	</array>
