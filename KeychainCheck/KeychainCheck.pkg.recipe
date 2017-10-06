@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>INSTALL_DIR</key>
-		<string>Applications</string>
+		<string>Applications/AppsNonApple/Admin</string>
 	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.KeychainCheck</string>
@@ -38,6 +38,34 @@
 		    </dict>
 		</dict>
 		<dict>
+		    <key>Processor</key>
+		    <string>FileCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+				<key>file_content</key>
+				<string>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+&lt;pkg-info overwrite-permissions="false" followSymLinks="true"/&gt;
+</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>PkgInfoCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>infofile</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				<key>pkgtype</key>
+				<string>flat</string>
+				<key>version</key>
+				<string>%version%</string>
+				<key>template_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+		    </dict>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>PkgCreator</string>
 			<key>Arguments</key>
@@ -50,6 +78,10 @@
 					<string>%version%</string>
 					<key>id</key>
 					<string>%bundleid%</string>
+					<key>infofile</key>
+					<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+					<key>pkgtype</key>
+					<string>flat</string>
 					<key>options</key>
 					<string>purge_ds_store</string>
 					<key>chown</key>
