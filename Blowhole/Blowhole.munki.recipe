@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>A command tool to write into the log in macOS Sierra and High Sierra</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Blowhole</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>unixtools</string>
+		<key>pkginfo</key>
+		<dict>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.Blowhole</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/Version.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/Blowhole.pkg</string>
+				<key>pkginfo</key>
+				<dict>
+        			<key>version</key>
+		        	<string>%version%</string>
+        			<key>display_name</key>
+		        	<string>Blowhole %version%</string>
+                    <key>catalogs</key>
+                    <array>
+                        <string>testing</string>
+                    </array>
+                    <key>category</key>
+                    <string>%MUNKI_CATEGORY%</string>
+                    <key>description</key>
+                    <string>Blowhole is a command tool, which can be run in Terminal or called from any app or scripting language with support for calling command tools, which writes out an entry in Sierra’s new log system. Use this to check running of periodic tasks, or from any scripting language which does not have direct access to the new log. Version 2 allows the writing of arbitrary strings at last.</string>
+                    <key>developer</key>
+                    <string>The Eclectic Company</string>
+                    <key>name</key>
+                    <string>%NAME%</string>
+                    <key>unattended_install</key>
+                    <true/>
+                    <key>minimum_os_version</key>
+                    <string>10.12.4</string>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
