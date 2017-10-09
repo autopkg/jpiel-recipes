@@ -14,6 +14,12 @@
 		<string>unixtools</string>
 		<key>pkginfo</key>
 		<dict>
+                    <key>catalogs</key>
+                    <array>
+                        <string>testing</string>
+                    </array>
+                    <key>description</key>
+                    <string>Blowhole is a command line tool, which can be run in Terminal or called from any app or scripting language with support for calling command tools, which writes out an entry in Sierra’s new log system. Use this to check running of periodic tasks, or from any scripting language which does not have direct access to the new log. Version 2 allows the writing of arbitrary strings at last.</string>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
@@ -44,14 +50,8 @@
 		        	<string>%version%</string>
         			<key>display_name</key>
 		        	<string>Blowhole %version%</string>
-                    <key>catalogs</key>
-                    <array>
-                        <string>testing</string>
-                    </array>
                     <key>category</key>
                     <string>%MUNKI_CATEGORY%</string>
-                    <key>description</key>
-                    <string>Blowhole is a command tool, which can be run in Terminal or called from any app or scripting language with support for calling command tools, which writes out an entry in Sierra’s new log system. Use this to check running of periodic tasks, or from any scripting language which does not have direct access to the new log. Version 2 allows the writing of arbitrary strings at last.</string>
                     <key>developer</key>
                     <string>The Eclectic Company</string>
                     <key>name</key>

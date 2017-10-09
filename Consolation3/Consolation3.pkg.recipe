@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Package KeychainCheck. Will install the app and the "readme" in a folder named KeychainCheck.</string>
+	<string>Package Consolation3. Will install the app and the other files in a folder named Consolation3.</string>
 	<key>Identifier</key>
-	<string>com.github.jpiel.pkg.KeychainCheck</string>
+	<string>com.github.jpiel.pkg.Consolation3</string>
 	<key>Input</key>
 	<dict>
 		<key>INSTALL_DIR</key>
-		<string>Applications</string>
+		<string>Applications/AppsNonApple/Admin</string>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.download.KeychainCheck</string>
+	<string>com.github.jpiel.download.Consolation3</string>
 	<key>Process</key>
 	<array>
 		<dict>
