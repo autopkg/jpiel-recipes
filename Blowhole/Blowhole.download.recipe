@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Blowhole</string>
 		<key>SEARCH_PATTERN</key>
-		<string>([0-9]+/[0-9]+/blowhole(?P&lt;version&gt;[0-9]+).*\.zip)</string>
+		<string>([0-9]+/[0-9]+/blowhole(?P&lt;BHversion&gt;[0-9]+).*\.zip)</string>
 		<key>SEARCH_URL</key>
 		<string>https://eclecticlight.co/downloads/</string>
 		<key>DL_URL</key>
@@ -55,7 +55,7 @@
 		    	<key>plist_data</key>
                 <dict>
                     <key>CFBundleShortVersionString</key>
-                    <string>%version%.0</string>
+                    <string>%BHversion%.0</string>
                 </dict>
 			</dict>
 		</dict>
@@ -103,6 +103,7 @@
     			</array>
 			</dict>
 		</dict>
+
 	</array>
 </dict>
 </plist>

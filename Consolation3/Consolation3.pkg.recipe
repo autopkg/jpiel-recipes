@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>INSTALL_DIR</key>
-		<string>Applications/AppsNonApple/Admin</string>
+		<string>Applications</string>
 	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.Consolation3</string>
