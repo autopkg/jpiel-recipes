@@ -47,7 +47,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>InstallFromDMG</string>
+			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
 			    <key>source_path</key>
