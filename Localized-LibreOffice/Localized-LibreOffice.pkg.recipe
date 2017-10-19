@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of LibreOffice, merge it with language pack and builds a package.</string>
+	<key>Identifier</key>
+	<string>Localized-LibreOffice.pkg.recipe</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>LibreOffice</string>
+		<key>LANGUAGE_CODE</key>
+		<string>fr</string>
+		<key>INSTALL_DIR</key>
+		<string>Applications</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>Localized-LibreOffice.download.recipe</string>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+		    <key>Processor</key>
+		    <string>PlistReader</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%INSTALL_DIR%/%NAME%.app/Contents/Info.plist</string>
+				<key>plist_keys</key>
+                <dict>
+                    <key>CFBundleShortVersionString</key>
+                    <string>version</string>
+                    <key>CFBundleIdentifier</key>
+                    <string>bundleid</string>
+                    <key>CFBundleName</key>
+                    <string>app_name</string>
+                </dict>
+		    </dict>
+		</dict>		
+		<dict>
+		    <key>Processor</key>
+		    <string>FileCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+				<key>file_content</key>
+				<string>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+&lt;pkg-info overwrite-permissions="false" followSymLinks="true"/&gt;
+</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>PkgInfoCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>infofile</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				<key>pkgtype</key>
+				<string>flat</string>
+				<key>version</key>
+				<string>%version%</string>
+				<key>template_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+		    </dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+    				<key>pkgname</key>
+	    			<string>%NAME%_%LANGUAGE_CODE%-%version%</string>
+					<key>id</key>
+					<string>org.libreoffice.libreoffice-%LANGUAGE_CODE%</string>
+					<key>options</key>
+					<string>purge_ds_store</string>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>path</key>
+							<string>%INSTALL_DIR%</string>
+							<key>user</key>
+							<string>root</string>
+							<key>group</key>
+							<string>admin</string>
+    						<key>mode</key>
+	    					<string>0775</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

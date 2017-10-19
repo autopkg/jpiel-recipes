@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of LibreOffice with a language pack and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>Localized-LibreOffice.munki.recipe</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>LibreOffice</string>
+		<key>LANGUAGE_CODE</key>
+		<string>fr</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Productivity</string>
+		<key>INSTALL_DIR</key>
+		<string>Applications</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>LibreOffice with %LANGUAGE_CODE% Language pack</string>
+			<key>developer</key>
+			<string>The Document Foundation</string>
+			<key>display_name</key>
+			<string>LibreOffice %LANGUAGE_CODE%</string>
+			<key>name</key>
+			<string>%NAME%_%LANGUAGE_CODE%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>%NAME%</string>
+            </array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.0</string>
+	<key>ParentRecipe</key>
+	<string>Localized-LibreOffice.pkg.recipe</string>
+	<key>Process</key>
+	<array>
+		<dict>
+		  <key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
