@@ -30,6 +30,10 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>Consolation3</string>
+            </array>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>

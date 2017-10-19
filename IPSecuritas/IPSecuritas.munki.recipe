@@ -30,7 +30,10 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-			
+			<key>blocking_applications</key>
+            <array>
+                <string>IPSecuritas</string>
+            </array>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>

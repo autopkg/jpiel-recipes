@@ -30,6 +30,10 @@
 			<string>%NAME%-app</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>xattred</string>
+            </array>
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>

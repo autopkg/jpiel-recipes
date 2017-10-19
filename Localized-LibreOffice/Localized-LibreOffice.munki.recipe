@@ -40,7 +40,7 @@
 			<true/>
 			<key>blocking_applications</key>
             <array>
-                <string>%NAME%</string>
+                <string>LibreOffice</string>
             </array>
 		</dict>
 	</dict>
