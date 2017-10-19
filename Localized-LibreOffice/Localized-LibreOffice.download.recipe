@@ -34,26 +34,15 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>GetCurrentUserInfo</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>InstallFromDMG</string>
+			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-			    <key>dmg_path</key>
-			    <string>%RECIPE_CACHE_DIR%/downloads/LibreOffice_%version%_MacOS_x86-64.dmg</string>
-				<key>items_to_copy</key>
-				<array>
-			        <dict>
-			            <key>source_item</key>
-			            <string>%NAME%.app</string>
-			            <key>destination_path</key>
-			            <string>%RECIPE_CACHE_DIR%/downloads</string>
-			            <key>user</key>
-			            <string>%cur_user%</string>
-			        </dict>
-			    </array>
+			    <key>source_path</key>
+			    <string>%RECIPE_CACHE_DIR%/downloads/LibreOffice_%version%_MacOS_x86-64.dmg/%NAME%.app</string>
+	            <key>destination_path</key>
+	            <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.app</string>
+	            <key>overwrite</key>
+	            <true/>
 			</dict>
 		</dict>
 		<dict>
@@ -61,21 +50,12 @@
 			<string>InstallFromDMG</string>
 			<key>Arguments</key>
 			<dict>
-			    <key>dmg_path</key>
-			    <string>%RECIPE_CACHE_DIR%/downloads/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
-				<key>items_to_copy</key>
-				<array>
-			        <dict>
-			            <key>source_item</key>
-			            <string>LibreOffice Language Pack.app</string>
-			            <key>destination_path</key>
-			            <string>%RECIPE_CACHE_DIR%/downloads</string>
-			            <key>destination_item</key>
-			            <string>%NAME%-LanguagePack.app</string>
-			            <key>user</key>
-			            <string>%cur_user%</string>
-			        </dict>
-			    </array>
+			    <key>source_path</key>
+			    <string>%RECIPE_CACHE_DIR%/downloads/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg/LibreOffice Language Pack.app</string>
+	            <key>destination_path</key>
+	            <string>%RECIPE_CACHE_DIR%/downloads/%NAME%-LanguagePack.app</string>
+	            <key>overwrite</key>
+	            <true/>
 			</dict>
 		</dict>
 		<dict>
@@ -98,6 +78,8 @@
 				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%.app</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%INSTALL_DIR%/%NAME%.app</string>
+	            <key>overwrite</key>
+	            <true/>
 			</dict>
 		</dict>
 		<dict>
