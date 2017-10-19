@@ -18,3 +18,6 @@ Localized-LibreOffice.download.recipe :
  
 Localized-LibreOffice.munki.recipe : 
 - create the munki pkg
+
+GetCurrentUserInfo.py :
+- This is a small Processor to get the name of the user running autopkg.
