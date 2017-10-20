@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the current release version of LibreOffice, merge it with language pack and builds a package.</string>
 	<key>Identifier</key>
-	<string>Localized-LibreOffice.pkg.recipe</string>
+	<string>com.github.jpiel.pkg.Localized-LibreOffice</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -16,7 +16,7 @@
 		<string>Applications</string>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>Localized-LibreOffice.download.recipe</string>
+	<string>com.github.jpiel.download.Localized-LibreOffice</string>
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>Process</key>

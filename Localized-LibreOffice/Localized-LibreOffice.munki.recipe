@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the current release version of LibreOffice with a language pack and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>Localized-LibreOffice.munki.recipe</string>
+	<string>com.github.jpiel.munki.Localized-LibreOffice</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -47,7 +47,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>ParentRecipe</key>
-	<string>Localized-LibreOffice.pkg.recipe</string>
+	<string>com.github.jpiel.pkg.Localized-LibreOffice</string>
 	<key>Process</key>
 	<array>
 		<dict>

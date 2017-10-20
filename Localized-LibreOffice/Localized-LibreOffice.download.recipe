@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>This recipe downloads latest LibreOffice and the language pack of the specified language.</string>
 	<key>Identifier</key>
-	<string>Localized-LibreOffice.download.recipe</string>
+	<string>com.github.jpiel.download.Localized-LibreOffice</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
