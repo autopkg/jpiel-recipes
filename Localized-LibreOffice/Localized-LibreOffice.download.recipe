@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>This recipe downloads latest LibreOffice and the language pack of the specified language.</string>
+	<string>This recipe downloads latest LibreOffice and the language pack of the specified language.
+	
+	LibreOffice Still is the stable version that has undergone more testing (over a longer time). It is usually recommended for more conservative use.
+LibreOffice Fresh is the stable version with the most recent features. Users interested in taking advantage of our most innovative features should download and use our fresh version.
+
+LibreOffice main app is downloaded according to io.github.hjuutilainen.download.LibreOffice code but with CHECK_FILE_SIZE_ONLY added</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Localized-LibreOffice</string>
 	<key>Input</key>
@@ -12,13 +17,24 @@
 		<string>LibreOffice</string>
 		<key>LANGUAGE_CODE</key>
 		<string>fr</string>
+		<key>RELEASE</key>
+		<string>fresh</string>
 	</dict>
-	<key>ParentRecipe</key>
-	<string>io.github.hjuutilainen.download.LibreOffice</string>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>(?P&lt;DOWNLOAD_URL&gt;download.documentfoundation.org/libreoffice/stable/[\d\.]+/mac/x86_64/LibreOffice_(?P&lt;version&gt;[\d\.]+)_MacOS_x86-64.dmg)</string>
+				<key>url</key>
+				<string>https://www.libreoffice.org/download/libreoffice-%RELEASE%/?type=mac-x86_64</string>
+			</dict>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -26,11 +42,37 @@
 			<dict>
 				<key>url</key>
 			    <string>http://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
+                <key>CHECK_FILESIZE_ONLY</key>
+                <true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://%DOWNLOAD_URL%</string>
+                <key>CHECK_FILESIZE_ONLY</key>
+                <true/>
 			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/LibreOffice.app</string>
+				<key>requirement</key>
+				<string>(identifier "org.libreoffice.script.LibreOffice" or identifier "org.libreoffice.script") and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7P5S3ZLCN7"</string>
+				<key>strict_verification</key>
+				<true />
+			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>

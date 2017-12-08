@@ -7,8 +7,10 @@ The problem with my solution is that if you won't be able to install other langu
 
 I also simplified a lot the process, maybe because the parent recipe for LibreOffice was also simplified.
 
+Instead of using io.github.hjuutilainen.download.LibreOffice as parent recipe, i decided to use his code and add CHECK_FILE_SIZE_ONLY to true. Since the version is in the name, any new version will lead to a new name anyway.
+
 Localized-LibreOffice.download.recipe :
- - Use  io.github.hjuutilainen.download.LibreOffice as parent recipe to download the latest version of LibreOffice.
+ - Download the latest version of LibreOffice.
  - Download the language pack.
  - Mount the DMG of LibreOffice and copy the content in the Cache
  - Mount the DMG of LanguagePack and expand it in the LibreOffice application.
