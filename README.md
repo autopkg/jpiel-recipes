@@ -8,3 +8,4 @@ I install them with the App in a folder named from the App name.
 I usually also provide an -AppOnly.munki recipe for this applications for those who want to install only
 the app without the folder and other files.
 
+Localized-LibreOffice is based on Michal Moravec's work. See README in the recipe folder for more info.
