@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>A command tool to write into the log in macOS Sierra and High Sierra</string>
+	<string>A command tool to write text in the log of macOS Sierra and High Sierra</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Blowhole</string>
 	<key>Input</key>
