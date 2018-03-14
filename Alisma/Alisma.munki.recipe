@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>A command tool to create Finder aliases, and to resolve them to full paths</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Alisma</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>unixtools</string>
+		<key>pkginfo</key>
+		<dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Alisma is a small command tool which gives access to Finder aliases from Terminal and shell scripts. It has two options, one which creates a Finder alias to a given file/folder, the other which resolves and existing Finder alias to the full path to the file/folder. type "alisma -h" for usage</string>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
+            <key>developer</key>
+            <string>The Eclectic Company</string>
+            <key>name</key>
+            <string>%NAME%</string>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.Alisma</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/Version.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/Alisma.pkg</string>
+				<key>additional_makepkginfo_options</key>
+				<array>
+				    <string>--pkgvers=%version%</string>
+				    <string>--displayname=Alisma %version%</string>
+				    <string>--minimum-os-version=10.11.0</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

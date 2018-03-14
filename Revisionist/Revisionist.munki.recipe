@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>manage the macOS versioning system. Will install the app and readme file in a folder named Revisionist.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Revisionist</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Revisionist identifies and lists files with multiple versions, lists versions with details for individual files, previews them using Quick Look, duplicates them into an accessible folder, and removes/deletes selected versions from the macOS database. Now integrates RevisionCrawler features in the single app.</string>
+			<key>developer</key>
+			<string>The Eclectic Company</string>
+			<key>display_name</key>
+			<string>Revisionist</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>Revisionist</string>
+            </array>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.pkg.Revisionist</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
