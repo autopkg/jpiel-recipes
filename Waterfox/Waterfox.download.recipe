@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Waterfox.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.download.Waterfox</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Waterfox</string>
+		<key>SEARCH_PATTERN</key>
+		<string>Waterfox\%20(?P&lt;WFversion&gt;([0-9]+\.?)+)\%20(?P&lt;WFend&gt;.*)\.dmg</string>
+		<key>SEARCH_URL</key>
+		<string>https://www.waterfoxproject.org/downloads</string>
+		<key>DL_URL</key>
+		<string>https://storage-waterfox.netdna-ssl.com/releases/osx64/installer/</string>
+	</dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>%SEARCH_PATTERN%</string>
+				<key>url</key>
+				<string>%SEARCH_URL%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%_%WFversion%.dmg</string>
+				<key>url</key>
+				<string>%DL_URL%%NAME%%20%WFversion%%20%WFend%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
