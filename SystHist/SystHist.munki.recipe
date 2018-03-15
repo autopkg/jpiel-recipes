@@ -69,7 +69,7 @@
 				    <string>--destinationpath=%INSTALL_DIR%</string>
 				    <string>-o root</string>
 				    <string>-g admin</string>
-				    <string>-m 0775</string>
+				    <string>-m ug+rwx,o+rx</string>
 				</array>
 			</dict>
 		</dict>
