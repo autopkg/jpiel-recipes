@@ -85,7 +85,7 @@
 					<array>
 						<dict>
 							<key>path</key>
-							<string>%INSTALL_DIR%</string>
+							<string>/</string>
 							<key>user</key>
 							<string>root</string>
 							<key>group</key>
