@@ -11,9 +11,9 @@
 		<key>NAME</key>
 		<string>Waterfox</string>
 		<key>SEARCH_PATTERN</key>
-		<string>Waterfox\%20(?P&lt;WFversion&gt;([0-9]+\.?)+)\%20(?P&lt;WFend&gt;.*)\.dmg</string>
+		<string>Waterfox(?P&lt;WFversion&gt;.*)\.dmg</string>
 		<key>SEARCH_URL</key>
-		<string>https://www.waterfoxproject.org/downloads</string>
+		<string>https://www.waterfoxproject.org/en-US/</string>
 		<key>DL_URL</key>
 		<string>https://storage-waterfox.netdna-ssl.com/releases/osx64/installer/</string>
 	</dict>
@@ -38,7 +38,7 @@
 				<key>filename</key>
 				<string>%NAME%_%WFversion%.dmg</string>
 				<key>url</key>
-				<string>%DL_URL%%NAME%%20%WFversion%%20%WFend%.dmg</string>
+				<string>%DL_URL%%NAME%%WFversion%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
