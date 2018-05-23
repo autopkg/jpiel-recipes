@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>takes control of iCloud, investigates and diagnoses its problems. Will install the app and pdf guide in a folder named Cirrus.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Cirrus</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Cirrus has four main functions. It can download and evict (from local storage) items stored in iCloud so that you can manage them properly. It provides full details about files and folders held in iCloud. It performs a test file upload, which can help unstick pending uploads. It also provides specialised access to iCloud-related log activity. New iCloud Browser gets info straight from iCloud, works with Desktop & Documents Folders option, saves detailed reports, and runs on El Capitan too (except log feature).</string>
+			<key>developer</key>
+			<string>The Eclectic Company</string>
+			<key>display_name</key>
+			<string>Cirrus</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>Cirrus</string>
+            </array>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.pkg.Cirrus</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
