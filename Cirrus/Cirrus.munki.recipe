@@ -21,7 +21,7 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>Cirrus has four main functions. It can download and evict (from local storage) items stored in iCloud so that you can manage them properly. It provides full details about files and folders held in iCloud. It performs a test file upload, which can help unstick pending uploads. It also provides specialised access to iCloud-related log activity. New iCloud Browser gets info straight from iCloud, works with Desktop & Documents Folders option, saves detailed reports, and runs on El Capitan too (except log feature).</string>
+			<string>Cirrus has four main functions. It can download and evict (from local storage) items stored in iCloud so that you can manage them properly. It provides full details about files and folders held in iCloud. It performs a test file upload, which can help unstick pending uploads. It also provides specialised access to iCloud-related log activity. New iCloud Browser gets info straight from iCloud, works with Desktop and Documents Folders option, saves detailed reports, and runs on El Capitan too (except log feature).</string>
 			<key>developer</key>
 			<string>The Eclectic Company</string>
 			<key>display_name</key>
