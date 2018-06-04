@@ -7,18 +7,28 @@
 	<key>Identifier</key>
 	<string>com.github.jpiel.pkg.IPSecuritas</string>
 	<key>Input</key>
-	<dict/>
+	<dict>
+	    <key>appname</key>
+	    <string>IPSecuritas.app</string>
+	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.IPSecuritas</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>AppDmgVersioner</string>
+			<string>PlistReader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_path</key>
-				<string>%pathname%</string>
+				<key>info_path</key>
+				<string>%pathname%/%appname%</string>
+				<key>plist_keys</key>
+				<dict>
+				    <key>CFBundleShortVersionString</key>
+				    <string>version</key>
+				    <key>CFBundleIdentifier</key>
+				    <string>bundleid</string>
+				</dict>
 			</dict>
 		</dict>
 		<dict>
@@ -41,9 +51,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/%NAME%</string>
+				<string>%pathname%/%appname%</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%NAME%</string>
+				<string>%pkgroot%/Applications/%appname%</string>
 			</dict>
 		</dict>
 		<dict>
