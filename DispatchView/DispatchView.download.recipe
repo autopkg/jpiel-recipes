@@ -10,12 +10,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>DispatchView</string>
-		<key>SEARCH_PATTERN</key>
-		<string>([0-9]+/[0-9]+/dispatchview(?P&lt;maj_vers&gt;[0-9])(?P&lt;min_vers&gt;[0-9]+).*\.zip)</string>
-		<key>SEARCH_URL</key>
-		<string>https://eclecticlight.co/downloads/</string>
-		<key>DL_URL</key>
-		<string>https://eclecticlightdotcom.files.wordpress.com/</string>
 	</dict>
 	<key>Process</key>
 	<array>
@@ -25,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>%SEARCH_PATTERN%</string>
+				<string>([0-9]+/[0-9]+/dispatchview(?P&lt;maj_vers&gt;[0-9])(?P&lt;min_vers&gt;[0-9]+).*\.zip)</string>
 				<key>url</key>
-				<string>%SEARCH_URL%</string>
+				<string>https://eclecticlight.co/downloads/</string>
 			</dict>
 		</dict>
 		<dict>
@@ -38,7 +32,7 @@
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>%DL_URL%/%match%</string>
+				<string>https://eclecticlightdotcom.files.wordpress.com/%match%</string>
 			</dict>
 		</dict>
 		<dict>
