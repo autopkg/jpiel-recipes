@@ -10,6 +10,8 @@
 	<dict>
 	    <key>appname</key>
 	    <string>OmniDiskSweeper.app</string>
+		<key>INSTALL_DIR</key>
+		<string>Applications</string>
 	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.OmniDiskSweeper</string>
@@ -17,18 +19,11 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>PlistReader</string>
+			<string>AppDmgVersioner</string>
 			<key>Arguments</key>
 			<dict>
-				<key>info_path</key>
-				<string>%pathname%/%appname%</string>
-				<key>plist_keys</key>
-				<dict>
-				    <key>CFBundleShortVersionString</key>
-				    <string>version</string>
-				    <key>CFBundleIdentifier</key>
-				    <string>bundleid</string>
-				</dict>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
 			</dict>
 		</dict>
 		<dict>
@@ -37,7 +32,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
@@ -53,8 +48,36 @@
 				<key>source_path</key>
 				<string>%pathname%/%appname%</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%appname%</string>
+				<string>%pkgroot%/%INSTALL_DIR%/%appname%</string>
 			</dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>FileCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+				<key>file_content</key>
+				<string>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+&lt;pkg-info overwrite-permissions="false" followSymLinks="true"/&gt;
+</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>PkgInfoCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>infofile</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				<key>pkgtype</key>
+				<string>flat</string>
+				<key>version</key>
+				<string>%version%</string>
+				<key>template_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+		    </dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -75,7 +98,7 @@
 					<array>
 					<dict>
 						<key>path</key>
-						<string>Applications</string>
+						<string>/</string>
 						<key>user</key>
 						<string>root</string>
 						<key>group</key>

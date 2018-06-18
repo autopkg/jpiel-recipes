@@ -10,8 +10,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>OmniDiskSweeper</string>
-		<key>APPCAST_URL</key>
-		<string>http://update.omnigroup.com/appcast/com.omnigroup.OmniDiskSweeper</string>
 	</dict>
 	<key>Process</key>
 	<array>
@@ -21,7 +19,7 @@
             <key>Arguments</key>
             <dict>
                 <key>appcast_url</key>
-                <string>%APPCAST_URL%</string>
+                <string>http://update.omnigroup.com/appcast/com.omnigroup.OmniDiskSweeper</string>
                 <key>alternate_xmlns_url</key>
                 <string>http://www.omnigroup.com/namespace/omniappcast/v1</string>
             </dict>

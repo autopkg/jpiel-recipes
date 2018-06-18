@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>OmniDiskSweeper is really great at what it does- showing you the files on your drive, in descending order by size, and letting you decide what to do with them. Delete away, but exercise caution. (Requires OS X v10.8+)</string>
+	<string>OmniDiskSweeper help tracks and delete big files.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.OmniDiskSweeper</string>
 	<key>Input</key>
@@ -21,9 +21,9 @@
 			<key>category</key>
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
-			<string>Client VPN</string>
+			<string>OmniDiskSweeper is really great at what it does- showing you the files on your drive, in descending order by size, and letting you decide what to do with them. Delete away, but exercise caution. (Requires OS X v10.8+)</string>
 			<key>developer</key>
-			<string>Lobotomo Software</string>
+			<string>OmniGroup</string>
 			<key>display_name</key>
 			<string>OmniDiskSweeper</string>
 			<key>name</key>
