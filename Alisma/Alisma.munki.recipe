@@ -36,15 +36,6 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/Version.plist</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
@@ -54,8 +45,6 @@
 				<string>%RECIPE_CACHE_DIR%/Alisma.pkg</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
-				    <string>--pkgvers=%version%</string>
-				    <string>--displayname=Alisma %version%</string>
 				    <string>--minimum-os-version=10.11.0</string>
 				</array>
 			</dict>

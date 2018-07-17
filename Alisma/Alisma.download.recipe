@@ -41,20 +41,6 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>PlistEditor</string>
-			<key>Arguments</key>
-			<dict>
-				<key>output_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/Version.plist</string>
-		    	<key>plist_data</key>
-                <dict>
-                    <key>CFBundleShortVersionString</key>
-                    <string>%Aversion%.0</string>
-                </dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
