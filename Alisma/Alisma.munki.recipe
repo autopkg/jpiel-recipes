@@ -45,6 +45,7 @@
 				<string>%RECIPE_CACHE_DIR%/Alisma.pkg</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
+				    <string>--displayname=%NAME%</string>				
 				    <string>--minimum-os-version=10.11.0</string>
 				</array>
 			</dict>
