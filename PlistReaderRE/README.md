@@ -17,6 +17,7 @@ Example :
             <key>repl</key>
             <string>\1</string>
          </dict>
-</dict>```
+</dict>
+```
 
 As of now, it doesn't work because of the special chars in repl string.
