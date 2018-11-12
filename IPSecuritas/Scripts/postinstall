@@ -1,0 +1,60 @@
+#!/bin/bash
+
+ERROR=0
+
+HELPER_PATH="$3/Applications/IPSecuritas.app/Contents/Library/LaunchServices/com.lobotomo.IPSecuritasDaemon"
+
+if [[ -f "$HELPER_PATH" ]]; then
+
+	# create the target directory if needed
+	if [[ ! -d "$3/Library/PrivilegedHelperTools" ]]; then
+		/bin/mkdir -p "$3/Library/PrivilegedHelperTools"
+		/bin/chmod 755 "$3/Library/PrivilegedHelperTools"
+		/usr/sbin/chown -R root:wheel "$3/Library/PrivilegedHelperTools"
+	fi
+	
+	# move the privileged helper into place
+	/bin/cp -f "$HELPER_PATH" "$3/Library/PrivilegedHelperTools"
+	
+	if [[ $? -eq 0 ]]; then
+		/bin/chmod 755 "$3/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon"
+
+		# create the launchd plist
+		PLIST="$3/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist"
+	
+		/bin/cat > "$PLIST" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>com.lobotomo.IPSecuritasDaemon</string>
+	<key>Program</key>
+	<string>/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
+EOF
+
+		/bin/chmod 644 "$PLIST"
+		
+		# load the launchd plist only if installing on the boot volume
+		if [[ "$3" = "/" ]]; then
+			/bin/launchctl load -wF "$PLIST"
+		fi
+
+	else
+		ERROR=1
+	fi
+else
+	ERROR=1
+fi
+
+exit $ERROR

@@ -30,10 +30,21 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
 			<key>blocking_applications</key>
             <array>
                 <string>IPSecuritas</string>
+                <string>racoon-ipsecuritas</string>
             </array>
+        	<key>postuninstall_script</key>
+	        <string>#!/bin/sh
+
+/bin/launchctl unload /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+
+rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
+	        </string>
+
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
