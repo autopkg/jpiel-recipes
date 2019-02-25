@@ -30,9 +30,13 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;DOWNLOAD_URL&gt;download.documentfoundation.org/libreoffice/stable/[\d\.]+/mac/x86_64/LibreOffice_(?P&lt;version&gt;[\d\.]+)_MacOS_x86-64.dmg)</string>
+				<string>LibreOffice (?P&lt;version&gt;[\d\.]+) [^ ]+ - %RELEASE% Branch</string>
+				<key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
 				<key>url</key>
-				<string>https://www.libreoffice.org/download/libreoffice-%RELEASE%/?type=mac-x86_64</string>
+				<string>https://www.libreoffice.org/download/release-notes/</string>
 			</dict>
 		</dict>
 		<dict>
@@ -41,7 +45,7 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-			    <string>http://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
+				<string>http://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
                 <key>CHECK_FILESIZE_ONLY</key>
                 <true/>
 			</dict>
@@ -52,7 +56,7 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://%DOWNLOAD_URL%</string>
+				<string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64.dmg</string>
                 <key>CHECK_FILESIZE_ONLY</key>
                 <true/>
 			</dict>
