@@ -23,6 +23,20 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>PlistReader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%pathname%/%app_name%</string>
+				<key>plist_keys</key>
+				<dict>
+				    <key>CFBundleVersion</key>
+				    <string>bundleversion</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
@@ -56,7 +70,7 @@
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>version</key>
-					<string>%version%</string>
+					<string>%version%.%bundleversion%</string>
 					<key>id</key>
 					<string>%bundleid%</string>
 					<key>options</key>
