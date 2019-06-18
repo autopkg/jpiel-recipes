@@ -21,7 +21,7 @@
 				<key>re_pattern</key>
 				<string>([0-9]+/[0-9]+/blowhole(?P&lt;BHversion&gt;[0-9]+).*\.zip)</string>
 				<key>url</key>
-				<string>https://eclecticlight.co/downloads/</string>
+				<string>https://eclecticlight.co/consolation-t2m2-and-log-utilities/</string>
 			</dict>
 		</dict>
 		<dict>
@@ -70,7 +70,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unzip/blowhole*/Blowhole.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/unzip/blowhole*/Blowhole*.pkg</string>
 			</dict>
 		</dict>
 		<dict>
