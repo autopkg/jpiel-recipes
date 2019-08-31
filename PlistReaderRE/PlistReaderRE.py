@@ -17,6 +17,7 @@
 # limitations under the License.
 """See docstring for PlistReaderRE class"""
 
+from __future__ import absolute_import
 import os.path
 import glob
 import FoundationPlist
