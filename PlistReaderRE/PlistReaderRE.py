@@ -18,14 +18,14 @@
 """See docstring for PlistReaderRE class"""
 
 from __future__ import absolute_import
-import os.path
+
 import glob
-import FoundationPlist
+import os.path
 import re
 
-from autopkglib.DmgMounter import DmgMounter
+import FoundationPlist
 from autopkglib import ProcessorError
-
+from autopkglib.DmgMounter import DmgMounter
 
 __all__ = ["PlistReaderRE"]
 
