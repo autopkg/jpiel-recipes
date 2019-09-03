@@ -17,14 +17,15 @@
 # limitations under the License.
 """See docstring for PlistReaderRE class"""
 
-import os.path
+from __future__ import absolute_import
+
 import glob
-import FoundationPlist
+import os.path
 import re
 
-from autopkglib.DmgMounter import DmgMounter
+import FoundationPlist
 from autopkglib import ProcessorError
-
+from autopkglib.DmgMounter import DmgMounter
 
 __all__ = ["PlistReaderRE"]
 
