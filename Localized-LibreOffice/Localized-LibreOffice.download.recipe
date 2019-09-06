@@ -30,13 +30,28 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>LibreOffice (?P&lt;version&gt;[\d\.]+) [^ ]+ - %RELEASE% Branch</string>
+				<string>LibreOffice (?P&lt;smallversion&gt;[\d\.]+)\.\d+ [^ ]+ - %RELEASE% Branch</string>
 				<key>re_flags</key>
                 <array>
                     <string>IGNORECASE</string>
                 </array>
 				<key>url</key>
 				<string>https://www.libreoffice.org/download/release-notes/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>LibreOffice (?P&lt;version&gt;%smallversion%\.\d+) release notes</string>
+				<key>re_flags</key>
+                <array>
+                    <string>IGNORECASE</string>
+                </array>
+				<key>url</key>
+				<string>https://www.libreoffice.org/download/download/</string>
 			</dict>
 		</dict>
 		<dict>
