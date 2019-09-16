@@ -56,6 +56,8 @@ rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/Priv
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
