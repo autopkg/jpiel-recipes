@@ -92,7 +92,7 @@
 						<key>group</key>
 						<string>admin</string>
 						<key>mode</key>
-						<string>0775</string>
+						<string>0755</string>
 					</dict>
 					</array>
 				</dict>

@@ -48,7 +48,7 @@ rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/Priv
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.pkg.IPSecuritas</string>
+	<string>com.github.jpiel.download.IPSecuritas</string>
 	<key>Process</key>
 	<array>
 		<dict>
