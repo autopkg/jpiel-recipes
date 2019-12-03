@@ -10,14 +10,14 @@ then
 
   # unload the launchd plist only if installing on the boot volume
   # unload the launchd plist only if installing on the boot volume
-  if [[ "$3" = "/" ]]; then
-	/bin/launchctl unload "/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist"
-        /usr/bin/killall /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
-  fi
+  /bin/launchctl unload "/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist"
+  /usr/bin/killall /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
 
-  /bin/rm -rf "$3/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist" \
-            "$3/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon"
+  /bin/rm -rf "/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist" \
+            "/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon"
 
+
+  /usr/sbin/kextcache -clear-staging
   exit 0
 else
   exit 1

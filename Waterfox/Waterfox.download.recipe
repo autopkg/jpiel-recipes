@@ -3,13 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Waterfox.</string>
+	<string>Downloads the latest version of the Classic branch of Waterfox.
+	To download the Current branch of the app, change the APPBRANCH variable in overwrite.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>Waterfox</string>
+		<key>APPBRANCH</key>
+		<string>Classic</string>
 	</dict>
 	<key>Process</key>
 	<array>
@@ -19,7 +22,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;WFdmgname&gt;Waterfox[ ]?(?P&lt;WFversion&gt;[^ ]*)[^\.]*\.dmg)</string>
+				<string>(?P&lt;WFdmgname&gt;Waterfox\%20%APPBRANCH%[ ]?(?P&lt;WFversion&gt;[^ ]*)[^\.]*\.dmg)</string>
 				<key>url</key>
 				<string>https://www.waterfox.net/releases/</string>
 			</dict>
@@ -30,7 +33,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%WFversion%.dmg</string>
+				<string>%NAME%-%BRANCH%-%WFversion%.dmg</string>
 				<key>url</key>
 				<string>https://storage-waterfox.netdna-ssl.com/releases/osx64/installer/%WFdmgname%</string>
 			</dict>

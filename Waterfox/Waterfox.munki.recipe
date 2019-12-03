@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Alternative to Firefox.</string>
+	<string>Alternative to Firefox.
+	This recipe install by default the Classic branch.
+	To download the Current branch of the app, change the APPBRANCH variable in overwrite.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Waterfox</string>
 	<key>Input</key>

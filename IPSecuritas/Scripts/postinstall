@@ -2,53 +2,37 @@
 
 ERROR=0
 
-HELPER_PATH="$3/Applications/IPSecuritas.app/Contents/Library/LaunchServices/com.lobotomo.IPSecuritasDaemon"
+HELPER_PATH="/Applications/IPSecuritas.app/Contents/Library/LaunchServices/com.lobotomo.IPSecuritasDaemon"
 
 if [[ -f "$HELPER_PATH" ]]; then
 
 	# create the target directory if needed
-	if [[ ! -d "$3/Library/PrivilegedHelperTools" ]]; then
-		/bin/mkdir -p "$3/Library/PrivilegedHelperTools"
-		/bin/chmod 755 "$3/Library/PrivilegedHelperTools"
-		/usr/sbin/chown -R root:wheel "$3/Library/PrivilegedHelperTools"
+	if [[ ! -d "/Library/PrivilegedHelperTools" ]]; then
+		/bin/mkdir -p "/Library/PrivilegedHelperTools"
+		/bin/chmod 755 "/Library/PrivilegedHelperTools"
+		/usr/sbin/chown -R root:wheel "/Library/PrivilegedHelperTools"
 	fi
 	
 	# move the privileged helper into place
-	/bin/cp -f "$HELPER_PATH" "$3/Library/PrivilegedHelperTools"
+	/bin/cp -f "$HELPER_PATH" "/Library/PrivilegedHelperTools"
 	
 	if [[ $? -eq 0 ]]; then
-		/bin/chmod 755 "$3/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon"
+		/bin/chmod 755 "/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon"
 
 		# create the launchd plist
-		PLIST="$3/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist"
+		MYPLIST="/Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist"
 	
-		/bin/cat > "$PLIST" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>KeepAlive</key>
-	<true/>
-	<key>Label</key>
-	<string>com.lobotomo.IPSecuritasDaemon</string>
-	<key>Program</key>
-	<string>/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon</string>
-	<key>ProgramArguments</key>
-	<array>
-		<string>/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon</string>
-	</array>
-	<key>RunAtLoad</key>
-	<true/>
-</dict>
-</plist>
-EOF
+		/usr/libexec/PlistBuddy -c 'add KeepAlive bool true' ${MYPLIST}
+        /usr/libexec/PlistBuddy -c 'add Label string com.lobotomo.IPSecuritasDaemon' ${MYPLIST}
+        /usr/libexec/PlistBuddy -c 'add Program string /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon' ${MYPLIST}
+        /usr/libexec/PlistBuddy -c 'add RunAtLoad bool true' ${MYPLIST}
+        /usr/libexec/PlistBuddy -c 'add ProgramArguments array' ${MYPLIST}
+        /usr/libexec/PlistBuddy -c 'add :ProgramArguments: string /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon' ${MYPLIST}
 
-		/bin/chmod 644 "$PLIST"
+		/bin/chmod 644 "$MYPLIST"
 		
-		# load the launchd plist only if installing on the boot volume
-		if [[ "$3" = "/" ]]; then
-			/bin/launchctl load -wF "$PLIST"
-		fi
+		# load the launchd plist
+	    /bin/launchctl load -wF "$MYPLIST"
 
 	else
 		ERROR=1

@@ -3,11 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Packages the download of Waterfox.</string>
+	<string>Packages the download of Waterfox. By default Classic branch.
+	To download the Current branch of the app, change the APPBRANCH variable in overwrite.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.pkg.Waterfox</string>
 	<key>Input</key>
-	<dict/>
+	<dict>
+	    <key>APPNAME</key>
+	    <string>Waterfox %APPBRANCH%.app</string>
+	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Process</key>
@@ -57,7 +61,7 @@
 				<key>source_path</key>
 				<string>%pathname%/%app_name%</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/%app_name%</string>
+				<string>%pkgroot%/Applications/%APPNAME%</string>
 			</dict>
 		</dict>
 		<dict>
