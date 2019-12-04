@@ -34,7 +34,7 @@
 			<true/>
 			<key>blocking_applications</key>
             <array>
-                <string>Waterfox</string>
+                <string>%APPNAME%</string>
             </array>
 		</dict>
 	</dict>
