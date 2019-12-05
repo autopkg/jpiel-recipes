@@ -33,7 +33,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%BRANCH%-%WFversion%.dmg</string>
+				<string>%NAME%-%APPBRANCH%-%WFversion%.dmg</string>
 				<key>url</key>
 				<string>https://storage-waterfox.netdna-ssl.com/releases/osx64/installer/%WFdmgname%</string>
 			</dict>
