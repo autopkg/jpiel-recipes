@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>a log browser designed for ease of use, for macOS Sierra to Catalina. Will install the app only without the readme file.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Ulbow-AppOnly</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Ulbow is the simplest browser for the macOS Unified Log, without losing any of the power of Consolation 3. Uses similar libraries of predicates, filters (including regex), and styles to determine what is shown and how, it’s ideal for the casual user as well as log addicts.</string>
+			<key>developer</key>
+			<string>The Eclectic Company</string>
+			<key>display_name</key>
+			<string>Ulbow</string>
+			<key>name</key>
+			<string>%NAME%-app</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>Ulbow</string>
+            </array>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.Ulbow</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>force_munkiimport</key>
+				<false/>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
