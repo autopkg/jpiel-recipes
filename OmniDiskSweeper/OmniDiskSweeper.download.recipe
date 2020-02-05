@@ -13,6 +13,15 @@
 	</dict>
 	<key>Process</key>
 	<array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>This recipe is no longer maintained and will be removed. An alternative can be found here: https://github.com/autopkg/recipes/blob/master/OmniGroup/ .</string>
+            </dict>
+        </dict>
 	    <dict>
             <key>Processor</key>
             <string>SparkleUpdateInfoProvider</string>
