@@ -3,52 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Recreate the pCloudDrive pkg to have the app version as pkg version. This package requires osxfuse package to be installed. It is safer to install it when no user is logged in, so it requires logout.</string>
+	<string>Recreate the pCloudDrive pkg to have the app version as pkg version.</string>
 	<key>Identifier</key>
-	<string>com.github.jpiel.munki.pCloudDrive</string>
+	<string>com.github.jpiel.pkg.pCloudDrive</string>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.pCloudDrive</string>
 	<key>Input</key>
     <dict>
-		<key>MUNKI_CATEGORY</key>
-		<string>Bureautique</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>description</key>
-			<string>Install pCloud Drive application.</string>
-			<key>developer</key>
-			<string>pCloud</string>
-			<key>display_name</key>
-			<string>pCloud Drive</string>
-			<key>name</key>
-			<string>pCloud Drive</string>
-			<key>minimum_os_version</key>
-			<string>10.9</string>
-			<key>postinstall_script</key>
-			<string>#!/bin/sh
-
-rm -rf "/Library/ScriptingAdditions/pC Finder Injector.osax"
-cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax" "/Library/ScriptingAdditions/"
-			</string>
-			<key>requires</key>
-			<string>osxfuse</string>
-			<key>RestartAction</key>
-			<string>RequireLogout</string>
-			<key>unattended_uninstall</key>
-			<true/>
-			<key>uninstallable</key>
-			<true/>
-			<key>unattended_install</key>
-			<false/>
-		</dict>
     </dict>
 	<key>Process</key>
 	<array>
@@ -147,28 +108,6 @@ cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax
 				<key>path_list</key>
 				<array>
     				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications</string>
-    			</array>
-			</dict>
-		</dict>
-
-		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-		</dict>		
-
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-    				<string>%RECIPE_CACHE_DIR%/%NAME%-%appversion%.pkg</string>
     			</array>
 			</dict>
 		</dict>
