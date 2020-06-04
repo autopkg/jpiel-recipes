@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Recreate the pCloudDrive pkg to have the app version as pkg version. This package requires osxfuse package to be installed. It is safer to install it when no user is logged in, so it requires logout.</string>
+	<string>Recreate the pCloudDrive pkg to have the app version as pkg version. This package requires osxfuse package to be installed. It is safer to install it when no user is logged in, so it requires logout. If your autopkg host is connecting to internet using multiple WAN IP, the download may fail.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.pCloudDrive</string>
 	<key>ParentRecipe</key>
