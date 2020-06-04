@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Recreate the pCloudDrive pkg to have the app version as pkg version. This package requires osxfuse package to be installed. It is safer to install it when no user is logged in, so it requires logout.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.pCloudDrive</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.pCloudDrive</string>
+	<key>Input</key>
+    <dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Bureautique</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Install pCloud Drive application.</string>
+			<key>developer</key>
+			<string>pCloud</string>
+			<key>display_name</key>
+			<string>pCloud Drive</string>
+			<key>name</key>
+			<string>pCloud Drive</string>
+			<key>installer_type</key>
+			<string>copy_from_dmg</string>
+			<key>minimum_os_version</key>
+			<string>10.9</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/sh
+
+rm -rf "/Library/ScriptingAdditions/pC Finder Injector.osax"
+cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax" "/Library/ScriptingAdditions/"
+			</string>
+			<key>requires</key>
+			<string>osxfuse</string>
+			<key>RestartAction</key>
+			<string>RequireLogout</string>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>uninstallable</key>
+			<true/>
+			<key>unattended_install</key>
+			<false/>
+		</dict>
+    </dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-Pkg/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+    				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications</string>
+    			</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-Pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-App/</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications/</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+				    <key>version</key>
+				    <string>%appversion%</string>
+				</dict>
+			</dict>
+		</dict>		
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>force_munkiimport</key>
+				<false/>
+			</dict>
+		</dict>		
+		
+	</array>
+</dict>
+</plist>
