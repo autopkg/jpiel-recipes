@@ -67,17 +67,6 @@ cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-    				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications</string>
-    			</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
 			<key>Arguments</key>
 			<dict>
@@ -98,6 +87,17 @@ cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax
 				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications/</string>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+    				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications</string>
+    			</array>
 			</dict>
 		</dict>
 		<dict>
