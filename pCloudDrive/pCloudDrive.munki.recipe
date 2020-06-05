@@ -158,6 +158,8 @@ cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
