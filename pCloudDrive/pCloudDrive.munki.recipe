@@ -39,7 +39,9 @@ rm -rf "/Library/ScriptingAdditions/pC Finder Injector.osax"
 cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax" "/Library/ScriptingAdditions/"
 			</string>
 			<key>requires</key>
-			<string>osxfuse</string>
+			<array>
+    			<string>osxfuse</string>
+    		</array>
 			<key>RestartAction</key>
 			<string>RequireLogout</string>
 			<key>unattended_uninstall</key>
