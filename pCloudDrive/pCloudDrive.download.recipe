@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;appversion&gt;[0-9]+\.[0-9]+\.[0-9]+).*(https://[^\"]+)</string>
+				<string>(?P&lt;appversion&gt;[0-9]+\.[0-9]+\.[0-9]+).*href=\"(https://[^=]+)?(?P&lt;dlurl&gt;[^\"]+)</string>
 				<key>url</key>
 				<string>https://www.pcloud.com/fr/release-notes/mac-os.html</string>
 			</dict>
@@ -32,7 +32,7 @@
 				<key>re_pattern</key>
 				<string>downloadlink\"\:\ \"[^/]+/[^/]/(?P&lt;urldomain&gt;[^/]+)[^/]/(?P&lt;urlpart&gt;[^/]+)[^/]/(?P&lt;urlfile&gt;[^\"]+)</string>
 				<key>url</key>
-				<string>%match%</string>
+				<string>https://u.pcloud.link/publink/show?code=%match%</string>
 			</dict>
 		</dict>
 		<dict>
