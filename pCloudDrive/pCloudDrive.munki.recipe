@@ -33,15 +33,59 @@
 			<key>minimum_os_version</key>
 			<string>10.9</string>
 			<key>postinstall_script</key>
-			<string>#!/bin/sh
+			<string>#!/bin/zsh
+  
+  
+[ -f /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist ] &amp;&amp; launchctl bootout system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
 
-rm -rf "/Library/ScriptingAdditions/pC Finder Injector.osax"
+rm -rf /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+rm -rf /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+rm -rf /Library/ScriptingAdditions/pC\ Finder\ Injector.osax
+
+cp -R /Applications/pCloud\ Drive.app//Contents/Resources/pcloudfs.fs/Contents/Resources/mount_pcloudfs.app/Contents/Library/LaunchServices/com.pcloud.pcloudfs.Mounter.Helper /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+chmod -R 544  /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+
 cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax" "/Library/ScriptingAdditions/"
+
+
+
+
+echo "&lt;?xml version="1.0" encoding="UTF-8"?&gt;" &gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;plist version="1.0"&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;Label&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;string&gt;com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;OnDemand&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;true/&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;Program&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;string&gt;/Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;ProgramArguments&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;array&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;string&gt;/Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;/array&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;key&gt;Sockets&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;key&gt;MasterSocket&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockFamily&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;Unix&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockPathMode&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;integer&gt;438&lt;/integer&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockPathName&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;/var/run/com.pcloud.pcloudfs.Mounter.Helper.socket&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockType&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;Stream&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;/plist&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
+chmod 644 /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
+launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
 			</string>
-			<key>requires</key>
-			<array>
-    			<string>osxfuse</string>
-    		</array>
 			<key>RestartAction</key>
 			<string>RequireLogout</string>
 			<key>unattended_uninstall</key>
@@ -158,8 +202,6 @@ cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.osax
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
-				<string>%pkg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
