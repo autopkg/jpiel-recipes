@@ -21,6 +21,17 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgs</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+		</dict>
+		<dict>
+            <key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict/>
@@ -100,6 +111,31 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>Copier</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>source_path</key>
+				<string>%pkg_path%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgs/%NAME%-%version%.pkg</string>
+		    </dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+			    <key>path_list</key>
+    			<array>
+		    		<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+		    		<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+		    		<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+    			</array>
+			</dict>
+		</dict>
+
 	</array>
 </dict>
 </plist>
