@@ -83,10 +83,7 @@ echo "&lt;/plist&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounte
 
 chmod 644 /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
 
-launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
-#launchctl kickstart system/com.pcloud.pcloudfs.Mounter.Helper
-
-
+launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plists
 			</string>
 			<key>RestartAction</key>
 			<string>RequireLogout</string>
@@ -109,6 +106,8 @@ launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.He
 				<array>
 				    <string>%RECIPE_CACHE_DIR%/pCloud-Pkg</string>
 				    <string>%RECIPE_CACHE_DIR%/pCloud-App</string>
+				    <string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				    <string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
 				</array>
 			</dict>
 		</dict>	
@@ -124,6 +123,17 @@ launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.He
 				<string>%RECIPE_CACHE_DIR%/pCloud-Pkg/</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+				    <string>%RECIPE_CACHE_DIR%/pCloud-Pkg/Scripts</string>
+				</array>
+			</dict>
+		</dict>	
 		<dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
@@ -218,7 +228,7 @@ launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.He
 			<key>Arguments</key>
 			<dict>
 				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
+				<string>%MUNKI_REPO_SUBDIR%</string>				
 			</dict>
 		</dict>		
 
