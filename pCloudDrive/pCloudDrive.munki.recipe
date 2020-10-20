@@ -83,7 +83,7 @@ echo "&lt;/plist&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounte
 
 chmod 644 /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
 
-launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plists
+launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
 			</string>
 			<key>RestartAction</key>
 			<string>RequireLogout</string>
