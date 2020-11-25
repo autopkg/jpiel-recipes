@@ -54,7 +54,7 @@
 
 [ -e /Applications/Waterfox\ Current.app ] &amp;&amp; {
   echo "Waterfox Current.app is present, removing..."
-  rm -rf "/Applications/Waterfox\ Current.app"
+  rm -rf "/Applications/Waterfox Current.app"
 }
 [ -e /Applications/%APPNAME% ] &amp;&amp; {
   echo "%APPNAME% is present, removing..."
