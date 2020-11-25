@@ -3,54 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Alternative to Firefox.
-	This recipe install by default the Classic branch.
-	To download the Current branch of the app, change the APPBRANCH variable in overwrite.</string>
+	<string>This recipe was splitted into 2 distinct recipes : Waterfox-Current and Waterfox-Classic.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Waterfox</string>
-	<key>Input</key>
-	<dict>
-		<key>MUNKI_CATEGORY</key>
-		<string>Utilities</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>testing</string>
-			</array>
-			<key>category</key>
-			<string>%MUNKI_CATEGORY%</string>
-			<key>description</key>
-			<string>Internet Browser</string>
-			<key>developer</key>
-			<string>Waterfox</string>
-			<key>display_name</key>
-			<string>Waterfox</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-			<key>blocking_applications</key>
-            <array>
-                <string>%APPNAME%</string>
-            </array>
-		</dict>
-	</dict>
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.pkg.Waterfox</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-		</dict>
-	</array>
 </dict>
 </plist>

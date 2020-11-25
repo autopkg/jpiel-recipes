@@ -3,44 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Classic branch of Waterfox.
-	To download the Current branch of the app, change the APPBRANCH variable in overwrite.</string>
+	<string>This recipe was splitted into 2 distinct recipes : Waterfox-Current and Waterfox-Classic.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>Waterfox</string>
-		<key>APPBRANCH</key>
-		<string>Classic</string>
 	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>DeprecationWarning</string>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>(?P&lt;WFdmgname&gt;Waterfox\%20%APPBRANCH%[ ]?(?P&lt;WFversion&gt;[^ ]*)[^\.]*\.dmg)</string>
-				<key>url</key>
-				<string>https://www.waterfox.net/releases/</string>
+				<key>warning_message</key>
+				<string>This recipe was splitted into 2 distinct recipes Waterfox-Current and Waterfox-Classic for better clarity and easier maintaining.</string>
 			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-%APPBRANCH%-%WFversion%.dmg</string>
-				<key>url</key>
-				<string>https://storage-waterfox.netdna-ssl.com/releases/osx64/installer/%WFdmgname%</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>
