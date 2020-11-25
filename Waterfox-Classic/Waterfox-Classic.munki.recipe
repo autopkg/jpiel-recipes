@@ -52,8 +52,24 @@
                     <key>preinstall_script</key>
                     <string>#!/bin/zsh
 
-[ -e /Applications/Waterfox\ Classic.app ] &amp;&amp; rm -rf "/Applications/Waterfox\ Classic.app"
-[ -e /Applications/Waterfox\ Classic ] &amp;&amp; rm -rf "/Applications/Waterfox\ Classic"
+[ -e /Applications/Waterfox\ Classic.app ] &amp;&amp; {
+  echo "Waterfox Classic.app is present, removing..."
+  rm -rf "/Applications/Waterfox\ Classic.app"
+}
+
+[ -e /Applications/Waterfox\ Classic ] &amp;&amp; {
+  echo "Waterfox Classic folder is present, removing..."
+  rm -rf "/Applications/Waterfox\ Classic"
+}
+
+[ -e /Applications/%APPNAME% ] &amp;&amp; {
+  echo "%APPNAME% is present, removing..."
+  rm -rf "/Applications/%APPNAME%"
+}
+
+
+exit 0
+
 </string>
                 </dict>
             </dict>
