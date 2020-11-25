@@ -6,7 +6,18 @@
 	<string>This recipe was splitted into 2 distinct recipes : Waterfox-Current and Waterfox-Classic.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Waterfox</string>
+	<key>Input</key>
+	<dict>
+	</dict>
+
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.pkg.Waterfox</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -8,10 +8,16 @@
 	<string>com.github.jpiel.pkg.Waterfox</string>
 	<key>Input</key>
 	<dict>
-	    <key>APPNAME</key>
-	    <string>Waterfox %APPBRANCH%.app</string>
 	</dict>
+
 	<key>ParentRecipe</key>
 	<string>com.github.jpiel.download.Waterfox</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
 </dict>
 </plist>

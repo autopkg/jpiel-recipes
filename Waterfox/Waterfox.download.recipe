@@ -8,8 +8,8 @@
 	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Waterfox</string>
+	    <key>NAME</key>
+	    <string>Waterfox-Deprecated</string>
 	</dict>
 	<key>Process</key>
 	<array>
@@ -21,6 +21,10 @@
 				<key>warning_message</key>
 				<string>This recipe was splitted into 2 distinct recipes Waterfox-Current and Waterfox-Classic for better clarity and easier maintaining.</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>
