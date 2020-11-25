@@ -52,7 +52,7 @@
                     <key>preinstall_script</key>
                     <string>#!/bin/zsh
 
-[ -e /Applications/Waterfox\ Current.app] &amp;&amp; rm -rf "/Applications/Waterfox\ Current.app"
+[ -e /Applications/Waterfox\ Current.app ] &amp;&amp; rm -rf "/Applications/Waterfox\ Current.app"
 </string>
                 </dict>
             </dict>
