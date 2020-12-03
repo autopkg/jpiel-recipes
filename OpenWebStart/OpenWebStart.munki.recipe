@@ -18,7 +18,7 @@
 	<key>MinimumVersion</key>
 	<string>0.4.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.nstrauss.donwload.OpenWebStart</string>
+	<string>com.github.nstrauss.download.OpenWebStart</string>
 	<key>Process</key>
 	<array>
 		<dict>
