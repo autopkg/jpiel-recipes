@@ -21,7 +21,7 @@
 				<key>re_pattern</key>
 				<string>IPSecuritas[\ -]([0-9]+\.[0-9]+(\.[0-9]+)?)\.dmg</string>
 				<key>url</key>
-				<string>http://lobotomo.com/products/IPSecuritas/index.html</string>
+				<string>https://lobotomo.com/products/IPSecuritas/index.html</string>
 			</dict>
 		</dict>
 		<dict>
@@ -32,7 +32,7 @@
 				<key>filename</key>
 				<string>%NAME%_%match%.dmg</string>
 				<key>url</key>
-				<string>http://lobotomo.com/products/downloads/%NAME%%20%match%.dmg</string>
+				<string>https://lobotomo.com/products/downloads/%NAME%%20%match%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
