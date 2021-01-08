@@ -60,7 +60,7 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
+				<string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/x86_64/LibreOffice_%version%_MacOS_x86-64_langpack_%LANGUAGE_CODE%.dmg</string>
                 <key>CHECK_FILESIZE_ONLY</key>
                 <true/>
 			</dict>
