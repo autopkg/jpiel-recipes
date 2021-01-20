@@ -5,7 +5,8 @@
 	<key>Description</key>
 	<string>Alternative to Firefox.
 	This recipe install Classic version of Waterfox.
-	To download the Current version of the app, use the Waterfox recipe.</string>
+	To download the Current version of the app, use the Waterfox recipe.
+	Waterfox is a fork of Firefox.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Waterfox-Classic</string>
 	<key>Input</key>
