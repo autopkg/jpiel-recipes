@@ -4,7 +4,8 @@
 <dict>
 	<key>Description</key>
 	<string>Downloads the latest version of the Current branch of Waterfox.
-	To download the Classic version of the app, use the Waterfox-Classic recipe.</string>
+	To download the Classic version of the app, use the Waterfox-Classic recipe.
+	Waterfox is a fork of Firefox.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Waterfox-Current</string>
 	<key>Input</key>
