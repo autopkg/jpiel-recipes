@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 	    <key>appname</key>
-	    <string>Dialog.app</string>
+	    <string>Dialog Connect.app</string>
 		<key>INSTALL_DIR</key>
 		<string>Applications</string>
 	</dict>
