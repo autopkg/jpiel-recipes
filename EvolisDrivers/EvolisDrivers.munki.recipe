@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest macOS drivers for the Evolis Primacy Printer and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.EvolisDrivers</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>EvolisPrinterDriver</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>printers</string>
+		<key>MUNKI_CATEGORY</key>
+		<string>Driver</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Evolis Printer Drivers</string>
+			<key>developer</key>
+			<string>Evolis</string>
+			<key>display_name</key>
+			<string>Evolis Printer Driver</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.EvolisDrivers</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+			    <key>path_list</key>
+    			<array>
+		    		<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+    			</array>
+			</dict>
+		</dict>
+	</array>
+
+</dict>
+</plist>
