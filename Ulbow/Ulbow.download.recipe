@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>([0-9]+/[0-9]+/ulbow(?P&lt;version&gt;[0-9](.?[b0-9]+)?)\.zip)</string>
+				<string>([0-9]+/[0-9]+/ulbow(?P&lt;version&gt;[0-9](.?[b0-9\-]+)?)\.zip)</string>
 				<key>url</key>
 				<string>https://eclecticlight.co/downloads/</string>
 			</dict>
