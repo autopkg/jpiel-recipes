@@ -22,8 +22,6 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Client VPN</string>
-			<key>developer</key>
-			<string>Lobotomo Software</string>
 			<key>display_name</key>
 			<string>IPSecuritas</string>
 			<key>name</key>
@@ -32,18 +30,6 @@
 			<true/>
 			<key>unattended_uninstall</key>
 			<true/>
-			<key>blocking_applications</key>
-            <array>
-                <string>IPSecuritas</string>
-                <string>racoon-ipsecuritas</string>
-            </array>
-        	<key>postuninstall_script</key>
-	        <string>#!/bin/sh
-
-/bin/launchctl unload /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
-
-rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
-	        </string>
 
 		</dict>
 	</dict>
@@ -52,6 +38,84 @@ rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/Priv
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+                    <key>minimum_os_version</key>
+                    <string>10.15</string>
+         			<key>developer</key>
+		        	<string>Lobotomo Software</string>
+                    <key>postinstall_script</key>
+                    <string>#!/bin/zsh
+  
+launchctl bootout system /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+#kill -9 $(ps -ax |grep IPSecuritasMenu |grep -v grep|cut -f1 -d\ )
+
+rm -rf /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers
+rm -rf /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/admin.sock
+rm -rf /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
+
+mkdir -p /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers
+chmod 700  /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers
+cp -R /Applications/IPSecuritas.app/Contents/Library/helpers/*  /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers/
+chmod -R 755  /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers/*
+chmod 644  /Library/Application\ Support/Lobotomo\ Software/IPSecuritas/helpers/IPSecuritasFilter.kext/Contents/_CodeSignature
+
+cp /Applications/IPSecuritas.app/Contents/Library/LaunchServices/com.lobotomo.IPSecuritasDaemon /Library/PrivilegedHelperTools
+chmod 544 /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
+
+echo "&lt;?xml version="1.0" encoding="UTF-8"?&gt;" &gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "&lt;plist version="1.0"&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;key&gt;KeepAlive&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;true/&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;key&gt;Label&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;string&gt;com.lobotomo.IPSecuritasDaemon&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;key&gt;Program&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;string&gt;/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;key&gt;ProgramArguments&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;array&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "          &lt;string&gt;/Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;/array&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;key&gt;RunAtLoad&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "  &lt;true/&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+echo "&lt;/plist&gt;" &gt;&gt; /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+
+chmod 644 /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+
+launchctl bootstrap system /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+launchctl kickstart system/com.lobotomo.IPSecuritasDaemon
+
+killall IPSecuritasMenu
+
+exit 0
+
+                    </string>
+        			<key>blocking_applications</key>
+                    <array>
+                        <string>IPSecuritas</string>
+                        <string>racoon-ipsecuritas</string>
+                    </array>
+                	<key>postuninstall_script</key>
+        	        <string>#!/bin/sh
+
+/bin/launchctl unload /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist
+
+rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/PrivilegedHelperTools/com.lobotomo.IPSecuritasDaemon
+        	        </string>
+				    
+				</dict>
+			</dict>
+		</dict>		
+
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>repo_subdirectory</key>
@@ -61,8 +125,6 @@ rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/Priv
 				<key>munkiimport_appname</key>
 				<string>IPSecuritas.app</string>
 			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 		</dict>
 	</array>
 </dict>
