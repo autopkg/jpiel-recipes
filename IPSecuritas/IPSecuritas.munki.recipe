@@ -22,8 +22,6 @@
 			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>Client VPN</string>
-			<key>display_name</key>
-			<string>IPSecuritas</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -39,11 +37,40 @@
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/IPSecuritas.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/IPSecuritas.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleVersion</string>
+				<key>full_version</key>
+				<string>%version%</string>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
+        			<key>display_name</key>
+		        	<string>IPSecuritas %full_version%</string>
+        			<key>version</key>
+		        	<string>%version%</string>
                     <key>minimum_os_version</key>
                     <string>10.15</string>
          			<key>developer</key>
@@ -112,6 +139,26 @@ rm -rf /Library/LaunchDaemons/com.lobotomo.IPSecuritasDaemon.plist /Library/Priv
 				</dict>
 			</dict>
 		</dict>		
+
+		<dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>installs_item_paths</key>
+				<array>
+				    <string>/Applications/IPSecuritas.app</string>
+				</array>
+				<key>version_comparison_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+		</dict>
+
+
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
 
 		<dict>
 			<key>Processor</key>
