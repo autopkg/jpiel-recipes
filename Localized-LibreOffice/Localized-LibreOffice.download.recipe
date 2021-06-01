@@ -145,11 +145,20 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>FileFinder</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%-LanguagePack.app/**/tarball.tar.bz2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%-LanguagePack.app/Contents/Resources/tarball.tar.bz2</string>
+				<string>%found_filename%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/%INSTALL_DIR%/LibreOffice.app</string>
 			</dict>
