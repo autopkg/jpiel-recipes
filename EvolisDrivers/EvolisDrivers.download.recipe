@@ -23,7 +23,7 @@
                 <key>url</key>
                 <string>https://us.evolis.com/drivers-support/drivers-zenius-card-printer</string>
                 <key>re_pattern</key>
-                <string>(evolisprinterdriver-[\d.]*.pkg.zip)</string>
+                <string>(evolisprinterdriver-[\d.]*.zip)</string>
                 <key>result_output_var_name</key>
 				<string>download</string>
 			</dict>
