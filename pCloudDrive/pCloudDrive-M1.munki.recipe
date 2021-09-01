@@ -215,7 +215,10 @@ launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.He
                     <true/>
                     <key>unattended_install</key>
                     <false/>
-				    
+        			<key>requires</key>
+        			<array>
+        				<string>macfuse</string>
+        			</array>		    
 				</dict>
 			</dict>
 		</dict>		
