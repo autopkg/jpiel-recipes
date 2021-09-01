@@ -109,7 +109,7 @@
 				<key>pkg_request</key>
 				<dict>
 					<key>pkgname</key>
-					<string>%NAME%-%appversion%</string>
+					<string>%NAME%-%appversion%-M1</string>
 					<key>version</key>
 					<string>%appversion%</string>
 					<key>id</key>
