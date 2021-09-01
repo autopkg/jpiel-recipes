@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Recreate the pCloudDrive pkg to have the app version as pkg version. This package requires osxfuse package to be installed. It is safer to install it when no user is logged in, so it requires logout. If your autopkg host is connecting to internet using multiple WAN IP, the download may fail.
+	This package install the M1 version (chich is universal).</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.pCloudDrive-M1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.pCloudDrive-M1</string>
+	<key>Input</key>
+    <dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Bureautique</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Install pCloud Drive application.</string>
+			<key>developer</key>
+			<string>pCloud</string>
+			<key>display_name</key>
+			<string>pCloud Drive</string>
+			<key>name</key>
+			<string>pCloud Drive</string>
+		</dict>
+    </dict>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-Pkg/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+				    <string>%RECIPE_CACHE_DIR%/pCloud-Pkg/Scripts</string>
+				</array>
+			</dict>
+		</dict>	
+		<dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-Pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-App/</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+
+		<dict>
+		    <key>Processor</key>
+		    <string>FileCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+				<key>file_content</key>
+				<string>&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+&lt;pkg-info overwrite-permissions="false" followSymLinks="true"/&gt;
+</string>
+		    </dict>
+		</dict>
+		<dict>
+		    <key>Processor</key>
+		    <string>PkgInfoCreator</string>
+		    <key>Arguments</key>
+		    <dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pCloud-App</string>
+				<key>infofile</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				<key>pkgtype</key>
+				<string>flat</string>
+				<key>version</key>
+				<string>%appversion%</string>
+				<key>template_path</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfoTemplate</string>
+		    </dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>pkgname</key>
+					<string>%NAME%-%appversion%</string>
+					<key>version</key>
+					<string>%appversion%</string>
+					<key>id</key>
+					<string>com.mobileinno.pkg.pCloudDrive</string>
+					<key>options</key>
+					<string>purge_ds_store</string>
+					<key>chown</key>
+					<array>
+					<dict>
+						<key>path</key>
+						<string>/</string>
+						<key>user</key>
+						<string>root</string>
+						<key>group</key>
+						<string>admin</string>
+						<key>mode</key>
+						<string>0755</string>
+					</dict>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+    				<string>%RECIPE_CACHE_DIR%/pCloud-App/Applications</string>
+    			</array>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+                    <key>minimum_os_version</key>
+                    <string>10.15</string>
+                    <key>postinstall_script</key>
+                    <string>#!/bin/zsh
+  
+  
+[ -f /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist ] &amp;&amp; launchctl bootout system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
+rm -rf /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+rm -rf /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+rm -rf /Library/ScriptingAdditions/pC\ Finder\ Injector.*
+
+cp -R /Applications/pCloud\ Drive.app//Contents/Resources/pcloudfs.fs/Contents/Resources/mount_pcloudfs.app/Contents/Library/LaunchServices/com.pcloud.pcloudfs.Mounter.Helper /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+chmod -R 544  /Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper
+
+cp -R "/Applications/pCloud Drive.app/Contents/Resources/pC Finder Injector.*" "/Library/ScriptingAdditions/"
+
+
+
+
+echo "&lt;?xml version="1.0" encoding="UTF-8"?&gt;" &gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;plist version="1.0"&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;Label&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;string&gt;com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;OnDemand&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;true/&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;Program&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;string&gt;/Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;key&gt;ProgramArguments&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;array&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "  &lt;string&gt;/Library/PrivilegedHelperTools/com.pcloud.pcloudfs.Mounter.Helper&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;/array&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;key&gt;Sockets&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;key&gt;MasterSocket&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockFamily&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;Unix&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockPathMode&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;integer&gt;438&lt;/integer&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockPathName&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;/var/run/com.pcloud.pcloudfs.Mounter.Helper.socket&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;key&gt;SockType&lt;/key&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "			&lt;string&gt;Stream&lt;/string&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "		&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "	&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;/dict&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+echo "&lt;/plist&gt;" &gt;&gt; /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
+chmod 644 /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+
+launchctl bootstrap system /Library/LaunchDaemons/com.pcloud.pcloudfs.Mounter.Helper.plist
+                    </string>
+                    <key>RestartAction</key>
+                    <string>RequireLogout</string>
+                    <key>unattended_uninstall</key>
+                    <true/>
+                    <key>uninstallable</key>
+                    <true/>
+                    <key>unattended_install</key>
+                    <false/>
+				    
+				</dict>
+			</dict>
+		</dict>		
+
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>				
+			</dict>
+		</dict>		
+
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+    				<string>%RECIPE_CACHE_DIR%/%NAME%-%appversion%-M1.pkg</string>
+    			</array>
+			</dict>
+		</dict>
+		
+	</array>
+</dict>
+</plist>
