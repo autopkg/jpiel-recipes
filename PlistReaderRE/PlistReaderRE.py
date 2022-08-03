@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/autopkg/python
 #
 # Copyright 2013 Shea Craig
 # Mostly just reworked code from Per Olofsson/AppDmgVersioner.py and
