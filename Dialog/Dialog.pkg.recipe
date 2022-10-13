@@ -8,7 +8,9 @@
 	<string>com.github.jpiel.pkg.Dialog</string>
 	<key>Input</key>
 	<dict>
-	    <key>appname</key>
+	    <key>srcappname</key>
+	    <string>Dialog.app</string>
+	    <key>dstappname</key>
 	    <string>Dialog Connect.app</string>
 		<key>INSTALL_DIR</key>
 		<string>Applications</string>
@@ -46,9 +48,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/%appname%</string>
+				<string>%pathname%/%srcappname%</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/%INSTALL_DIR%/%appname%</string>
+				<string>%pkgroot%/%INSTALL_DIR%/%dstappname%</string>
 			</dict>
 		</dict>
 		<dict>
