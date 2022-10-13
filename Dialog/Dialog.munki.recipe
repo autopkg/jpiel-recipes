@@ -30,6 +30,8 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
 			<key>blocking_applications</key>
             <array>
                 <string>Dialog</string>

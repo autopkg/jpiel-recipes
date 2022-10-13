@@ -88,6 +88,8 @@
 			<dict>
 				<key>pkg_request</key>
 				<dict>
+					<key>pathname</key>
+					<string>%pkgroot%/%INSTALL_DIR%/</string>
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>version</key>
