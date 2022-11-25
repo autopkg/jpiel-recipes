@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>OnlyOffice Suite for Munki.   BE CAREFUL, looks like the override will by default put the ARCH value to x86_64 instead of arm. Please change it until i remake a full download recipe.</string>
+	<string>OnlyOffice Suite for Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.OnlyOffice-Silicon</string>
 	<key>Input</key>
