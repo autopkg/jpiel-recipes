@@ -62,7 +62,7 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%_%ARCH%_%version%.pkg</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
-				    <string>--displayname=%NAME%-Silicon</string>				
+				    <string>--displayname=%NAME%-Intel</string>				
 				    <string>--minimum-os-version=10.12.0</string>
 				    <string>--arch=%ARCH%</string>
 				</array>
