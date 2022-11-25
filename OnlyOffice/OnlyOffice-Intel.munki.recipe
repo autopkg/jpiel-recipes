@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>OnlyOffice Suite for Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.jpiel.munki.OnlyOffice</string>
+	<string>com.github.jpiel.munki.OnlyOffice-Intel</string>
 	<key>Input</key>
 	<dict>
 		<key>ARCH</key>
