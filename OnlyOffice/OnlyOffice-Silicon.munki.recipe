@@ -56,6 +56,8 @@
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
+			    <key>ARCH</key>
+			    <string>arm64</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>pkg_path</key>
