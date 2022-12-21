@@ -8,6 +8,9 @@
 	Waterfox is a fork of Firefox.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Waterfox-Classic</string>
+	<key>Input</key>
+	<dict>
+	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
