@@ -53,6 +53,7 @@
 				<key>pkg_path</key>
 				<string>%pathname%</string>				
 			</dict>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
