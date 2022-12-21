@@ -12,33 +12,18 @@
 	<dict>
 		<key>NAME</key>
 		<string>Waterfox</string>
-		<key>APPBRANCH</key>
-		<string>Classic</string>
 	</dict>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>DeprecationWarning</string>
-			<key>Arguments</key>
-			<dict>
-				<key>warning_message</key>
-				<string>This recipe is no more maintained because of constant change in version and naming scheme of Waterfox. Please contact me if you want to maintain it so i can transfer it to you.</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;WFdmgname&gt;Waterfox\%20%APPBRANCH%[ ]?(?P&lt;WFversion&gt;[^ ]*)[^\.]*\.dmg)</string>
+				<string>\"version\":\"(?P&lt;WFversion&gt;[\d]+\.[\d]+)\.</string>
 				<key>url</key>
-				<string>https://www.waterfox.net/releases/</string>
+				<string>https://classic.waterfox.net/</string>
 			</dict>
 		</dict>
 		<dict>
@@ -47,9 +32,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%APPBRANCH%-%WFversion%.dmg</string>
+				<string>Waterfox.Classic.%WFversion%.Setup.dmg</string>
 				<key>url</key>
-				<string>https://cdn.waterfox.net/releases/osx64/installer/%WFdmgname%</string>
+				<string>https://github.com/WaterfoxCo/Waterfox-Classic/releases/download/%WFversion%-classic/Waterfox.Classic.%WFversion%.Setup.dmg</string>
 			</dict>
 		</dict>
 		<dict>
@@ -59,3 +44,4 @@
 	</array>
 </dict>
 </plist>
+

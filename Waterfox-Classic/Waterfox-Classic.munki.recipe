@@ -13,6 +13,8 @@
 	<dict>
 		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
+	    <key>APPNAME</key>
+	    <string>Waterfox Classic.app</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps</string>
 		<key>pkginfo</key>
@@ -40,41 +42,9 @@
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.pkg.Waterfox-Classic</string>
+	<string>com.github.jpiel.download.Waterfox-Classic</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-                    <key>preinstall_script</key>
-                    <string>#!/bin/zsh
-
-[ -e /Applications/Waterfox\ Classic.app ] &amp;&amp; {
-  echo "Waterfox Classic.app is present, removing..."
-  rm -rf "/Applications/Waterfox Classic.app"
-}
-
-[ -e /Applications/Waterfox\ Classic ] &amp;&amp; {
-  echo "Waterfox Classic folder is present, removing..."
-  rm -rf "/Applications/Waterfox Classic*"
-}
-
-[ -e /Applications/%APPNAME% ] &amp;&amp; {
-  echo "%APPNAME% is present, removing..."
-  rm -rf "/Applications/%APPNAME%"
-}
-
-
-exit 0
-
-</string>
-                </dict>
-            </dict>
-        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -82,6 +52,8 @@ exit 0
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
 			</dict>
 		</dict>
 	</array>
