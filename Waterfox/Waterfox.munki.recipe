@@ -3,17 +3,56 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>This recipe was splitted into 2 distinct recipes : Waterfox-Current and Waterfox-Classic.</string>
+	<string>Downloads the latest version of the Current branch of Waterfox.
+	To download the Classic version of the app, use the Waterfox-Classic recipe.
+	Waterfox is a fork of Firefox.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.munki.Waterfox</string>
 	<key>Input</key>
 	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Utilities</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
+			<key>description</key>
+			<string>Internet Browser</string>
+			<key>developer</key>
+			<string>Waterfox</string>
+			<key>display_name</key>
+			<string>Waterfox</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>blocking_applications</key>
+            <array>
+                <string>%APPNAME%</string>
+            </array>
+		</dict>
 	</dict>
 
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.pkg.Waterfox</string>
+	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>				
+			</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>

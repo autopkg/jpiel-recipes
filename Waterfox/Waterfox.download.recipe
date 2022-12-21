@@ -3,23 +3,38 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>This recipe was splitted into 2 distinct recipes : Waterfox-Current and Waterfox-Classic.</string>
+	<string>Alternative to Firefox.
+	This recipe install the Current version.
+	To download the Classic version of the app, use the Waterfox-Classic recipe.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Waterfox</string>
 	<key>Input</key>
 	<dict>
 	    <key>NAME</key>
-	    <string>Waterfox-Deprecated</string>
+	    <string>Waterfox</string>
 	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>DeprecationWarning</string>
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>warning_message</key>
-				<string>This recipe was splitted into 2 distinct recipes Waterfox-Current and Waterfox-Classic for better clarity and easier maintaining.</string>
+				<key>re_pattern</key>
+				<string>(?P&lt;WFdmgname&gt;Waterfox\%20(?P&lt;WFversion&gt;G\d+\.\d+\.\d+)\.dmg)</string>
+				<key>url</key>
+				<string>https://www.waterfox.net/download/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>Waterfox-%WFversion%.dmg</string>
+				<key>url</key>
+				<string>https://cdn1.waterfox.net/waterfox/releases/%WFversion%/Darwin_x86_64-aarch64/%WFdmgname%</string>
 			</dict>
 		</dict>
 		<dict>

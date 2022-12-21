@@ -32,7 +32,7 @@
 			<key>developer</key>
 			<string>Waterfox</string>
 			<key>display_name</key>
-			<string>Waterfox</string>
+			<string>Waterfox-Classic</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
