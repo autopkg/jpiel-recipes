@@ -48,7 +48,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-		<dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
@@ -69,6 +68,7 @@ exit 0
                 </dict>
             </dict>
         </dict>
+		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
