@@ -48,14 +48,33 @@
 	<key>Process</key>
 	<array>
 		<dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+                    <key>preinstall_script</key>
+                    <string>#!/bin/zsh
+
+[ -e /Applications/%APPNAME% ] &amp;&amp; {
+  echo "%APPNAME% is present, removing..."
+  rm -rf "/Applications/%APPNAME%"
+}
+
+exit 0
+
+</string>
+                </dict>
+            </dict>
+        </dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
 			</dict>
 		</dict>
 	</array>
