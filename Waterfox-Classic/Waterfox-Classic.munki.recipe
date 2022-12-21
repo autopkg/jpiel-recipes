@@ -11,6 +11,8 @@
 	<string>com.github.jpiel.munki.Waterfox-Classic</string>
 	<key>Input</key>
 	<dict>
+		<key>NAME</key>
+		<string>Waterfox-Classic</string>
 		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
 	    <key>APPNAME</key>
