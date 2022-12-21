@@ -16,7 +16,7 @@
 		<key>MUNKI_CATEGORY</key>
 		<string>Utilities</string>
 	    <key>APPNAME</key>
-	    <string>Waterfox Classic.app</string>
+	    <string>%APPNAME%</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps</string>
 		<key>pkginfo</key>
@@ -44,18 +44,9 @@
 		</dict>
 	</dict>
 	<key>ParentRecipe</key>
-	<string>com.github.jpiel.download.Waterfox-Classic</string>
+	<string>com.github.jpiel.pkg.Waterfox-Classic</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>AppDmgVersioner</string>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_path</key>
-				<string>%pathname%</string>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
@@ -65,8 +56,6 @@
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
-				<key>CFBundleVersion</key>
-				<string>%version%.%WFsmallversion%</string>
 			</dict>
 		</dict>
 	</array>
