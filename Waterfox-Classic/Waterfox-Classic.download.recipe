@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>\"version\":\"(?P&lt;WFversion&gt;[\d]+\.[\d]+)\.</string>
+				<string>\"version\":\"(?P&lt;WFversion&gt;[\d]+\.(?P&lt;WFsmallversion&gt;[\d]+))\.</string>
 				<key>url</key>
 				<string>https://classic.waterfox.net/</string>
 			</dict>
