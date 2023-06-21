@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>refreshes Aliases and identifies broken Aliases</string>
+	<key>Identifier</key>
+	<string>com.github.jpiel.munki.Alifix</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_CATEGORY</key>
+		<string>Admin Utils</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+            <key>catalogs</key>
+            <array>
+                <string>testing</string>
+            </array>
+            <key>description</key>
+            <string>Scans folders deeply to identify and refresh all Finder Aliases, including those made by alisma. Reports all that are broken, and optionally writes adjacent text file with their internal details to help you repair the Alias. Full release with Help book and many improvements, now reduces time taken handling old broken aliases. Ideal before and after cloning or copying large folders or volumes, and as periodic housekeeping.</string>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
+            <key>developer</key>
+            <string>The Eclectic Company</string>
+            <key>name</key>
+            <string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+            <key>minimum_os_version</key>
+            <string>10.13</string>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.jpiel.download.Alifix</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>additional_makepkginfo_options</key>
+				<array>
+				    <string>--displayname=%NAME%</string>				
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
