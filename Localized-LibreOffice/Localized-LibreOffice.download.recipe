@@ -18,7 +18,7 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 		<key>LANGUAGE_CODE</key>
 		<string>fr</string>
 		<key>RELEASE</key>
-		<string>fresh</string>
+		<string>Latest</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -30,7 +30,7 @@ LibreOffice main app is downloaded according to io.github.hjuutilainen.download.
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>LibreOffice (?P&lt;smallversion&gt;[\d\.]+)\.\d+ [^ ]+ - %RELEASE% Branch</string>
+				<string>LibreOffice (?P&lt;smallversion&gt;\d+\.\d+)(\.\d+)? [^ ]+ - %RELEASE% Release</string>
 				<key>re_flags</key>
                 <array>
                     <string>IGNORECASE</string>
