@@ -10,36 +10,43 @@
 	<string>com.github.jpiel.download.Waterfox-Classic</string>
 	<key>Input</key>
 	<dict>
+		<key>NAME</key>
+		<string>Waterfox-Classic</string>
 	</dict>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>GitHubReleasesInfoProvider</string>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>\"version\":\"(?P&lt;WFversion&gt;[\d]+\.(?P&lt;WFsmallversion&gt;[\d]+))\.</string>
-				<key>url</key>
-				<string>https://classic.waterfox.net/</string>
+				<key>github_repo</key>
+				<string>WaterfoxCo/Waterfox-Classic</string>
+				<key>include_prereleases</key>
+				<true/>
+				<key>asset_regex</key>
+				<string>.+\.dmg</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>Waterfox.Classic.%WFversion%.Setup.dmg</string>
-				<key>url</key>
-				<string>https://github.com/WaterfoxCo/Waterfox-Classic/releases/download/%WFversion%-classic/Waterfox.Classic.%WFversion%.Setup.dmg</string>
-			</dict>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Waterfox Classic.app</string>
+				<key>requirement</key>
+				<string>identifier "org.waterfoxproject.waterfox classic" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2YMCX79ULQ"</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
-
