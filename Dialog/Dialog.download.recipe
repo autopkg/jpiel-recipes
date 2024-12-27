@@ -13,6 +13,15 @@
 	</dict>
 	<key>Process</key>
 	<array>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>Consider switching to the Doko-Phone recipes in this repo. This recipe is deprecated and will be removed in the future.</string>
+            </dict>
+        </dict>
 		<dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
