@@ -75,6 +75,8 @@ exit 0
 			<dict>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
 			</dict>
 		</dict>
 	</array>
