@@ -76,7 +76,7 @@
 				<key>pkg_request</key>
 				<dict>
     				<key>pkgname</key>
-	    			<string>%NAME%_%LANGUAGE_CODE%-%aux_arch_name%-%version%</string>
+	    			<string>%NAME%_%LANGUAGE_CODE%-%ARCH%-%version%</string>
 					<key>id</key>
 					<string>org.libreoffice.libreoffice-%LANGUAGE_CODE%</string>
 					<key>options</key>
