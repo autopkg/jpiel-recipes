@@ -20,3 +20,6 @@ Localized-LibreOffice.download.recipe :
  
 Localized-LibreOffice.munki.recipe : 
 - create the munki pkg
+
+The architecture (ARCH) can be 'x86_64' or 'aarch64'
+It use a copy of the CreateLibreOfficeAuxArchName processor from hjuutilainen that i changed to manage also arch in munki recipe.

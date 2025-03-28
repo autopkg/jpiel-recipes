@@ -42,6 +42,10 @@
             <array>
                 <string>LibreOffice</string>
             </array>
+            <key>supported_architectures</key>
+			<array>
+	    		<string>%munki_arch_name%</string>
+            </array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
