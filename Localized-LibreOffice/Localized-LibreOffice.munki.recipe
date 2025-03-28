@@ -31,7 +31,7 @@
 			<key>developer</key>
 			<string>The Document Foundation</string>
 			<key>display_name</key>
-			<string>LibreOffice %LANGUAGE_CODE%</string>
+			<string>LibreOffice %LANGUAGE_CODE% %ARCH%</string>
 			<key>name</key>
 			<string>%NAME%_%LANGUAGE_CODE%</string>
 			<key>unattended_install</key>
