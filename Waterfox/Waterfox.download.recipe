@@ -21,9 +21,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;WFdmgname&gt;Waterfox\%20(?P&lt;WFversion&gt;G\d+\.\d+\.\d+)\.dmg)</string>
+				<string>/BrowserWorks/Waterfox/tree/(?P&lt;WFVersion&gt;\d+\.\d+\.\d+)</string>
 				<key>url</key>
-				<string>https://www.waterfox.net/download/</string>
+				<string>https://github.com/BrowserWorks/Waterfox/releases</string>
 			</dict>
 		</dict>
 		<dict>
@@ -32,9 +32,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>Waterfox-%WFversion%.dmg</string>
+				<string>Waterfox-%WFVersion%.dmg</string>
 				<key>url</key>
-				<string>https://cdn1.waterfox.net/waterfox/releases/%WFversion%/Darwin_x86_64-aarch64/%WFdmgname%</string>
+				<string>https://cdn1.waterfox.net/waterfox/releases/%WFVersion%/Darwin_x86_64-aarch64/Waterfox%20%WFVersion%.dmg</string>
 			</dict>
 		</dict>
 		<dict>
@@ -44,3 +44,6 @@
 	</array>
 </dict>
 </plist>
+
+
+
