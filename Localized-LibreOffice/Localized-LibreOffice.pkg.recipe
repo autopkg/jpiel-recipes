@@ -79,8 +79,6 @@
 	    			<string>%NAME%_%LANGUAGE_CODE%-%ARCH%-%version%</string>
 					<key>id</key>
 					<string>org.libreoffice.libreoffice-%LANGUAGE_CODE%</string>
-					<key>options</key>
-					<string>purge_ds_store</string>
 					<key>chown</key>
 					<array>
 						<dict>
