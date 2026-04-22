@@ -40,38 +40,40 @@ The architecture (ARCH) can be 'x86_64' or 'aarch64'
 				<string>%ARCH%</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Try to parse the the 'Latest' or 'Previous' version from current release notes</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>LibreOffice (?P&lt;version&gt;\d+\.\d+(\.\d+)?) \(\w+ \d{2}, \d{4}\) - %RELEASE% Branch</string>
+				<key>url</key>
+				<string>https://www.libreoffice.org/release-notes/</string>
+			</dict>
+		</dict>
+
 
 		<dict>
+			<key>Comment</key>
+			<string>Try to parse the the 'Latest' or 'Previous' version from current release notes</string>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>LibreOffice (?P&lt;smallversion&gt;\d+\.\d+)(\.\d+)? [^ ]+ - %RELEASE% Release</string>
-				<key>re_flags</key>
-                <array>
-                    <string>IGNORECASE</string>
-                </array>
+				<string>LibreOffice (?P&lt;version&gt;\d+\.\d+(\.\d+)?) \(\w+ \d{2}, \d{4}\) - %RELEASE% Branch</string>
 				<key>url</key>
-				<string>https://www.libreoffice.org/download/release-notes/</string>
+				<string>https://www.libreoffice.org/release-notes/</string>
 			</dict>
 		</dict>
+
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>LibreOffice (?P&lt;version&gt;%smallversion%\.\d+) release notes</string>
-				<key>re_flags</key>
-                <array>
-                    <string>IGNORECASE</string>
-                </array>
-				<key>url</key>
-				<string>https://www.libreoffice.org/download/download/</string>
-			</dict>
-		</dict>
-		<dict>
+			<key>Comment</key>
+			<string>
+				For language pack. See below for explanation.
+			</string>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
@@ -83,20 +85,30 @@ The architecture (ARCH) can be 'x86_64' or 'aarch64'
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>
+				The current (late June 2021) dmg download URL at
+				https://www.libreoffice.org/download/download/?type=mac-x86_64
+				takes us to a JavaScript-heavy page that eventually redirects to
+				the download, but the download is at a predictable URL once we
+				know the version. So we just assemble that URL.
+			</string>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>https://download.documentfoundation.org/libreoffice/stable/%version%/mac/%ARCH%/LibreOffice_%version%_MacOS_%aux_arch_name%.dmg</string>
-                <key>CHECK_FILESIZE_ONLY</key>
-                <true/>
 			</dict>
 		</dict>
+
+
+
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
+
 		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
