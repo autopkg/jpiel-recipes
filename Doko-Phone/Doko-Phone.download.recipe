@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Doko-Phone app.</string>
+	<string>Downloads the latest version of Doko-Phone app. This receipt is for Silicon only.</string>
 	<key>Identifier</key>
 	<string>com.github.jpiel.download.Doko-Phone</string>
 	<key>Input</key>
@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.dmg</string>
+				<string>Doko-phone-arm.pkg</string>
 				<key>url</key>
-				<string>https://doko-phone.com/soft/Doko-phone.dmg</string>
+				<string>https://doko-phone.com/soft/Doko-phone-arm.pkg</string>
 			</dict>
 		</dict>
 		<dict>

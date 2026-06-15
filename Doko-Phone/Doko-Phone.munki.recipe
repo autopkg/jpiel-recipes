@@ -46,7 +46,7 @@
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/downloads/%NAME%.dmg</string>
+				<string>%RECIPE_CACHE_DIR%/downloads/Doko-phone-arm.pkg</string>
 			</dict>
 		</dict>
 	</array>
